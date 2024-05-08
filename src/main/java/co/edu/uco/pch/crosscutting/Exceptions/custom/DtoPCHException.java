@@ -11,13 +11,14 @@ public final class DtoPCHException extends PCHException{
 	private static final long serialVersionUID = 1L;
 
 	public DtoPCHException(final String mensajeUsuiario) {
-		super(mensajeUsuiario, Lugar.DATA);
+		super(mensajeUsuiario, Lugar.DTO);
 	}
 
-	public DtoPCHException(final String mensajeTecnico, final Throwable excepcionRaiz, final String mensajeUsuario) {
-		super(mensajeTecnico, Lugar.DATA, excepcionRaiz, mensajeUsuario);
+	public DtoPCHException(final String mensajeTecnico,final String mensajeUsuario, 
+			final Throwable exceptionRaiz) {
+		super(mensajeTecnico,mensajeUsuario, Lugar.DTO, exceptionRaiz);
 	}
-
+	
 	
 
 

@@ -11,13 +11,14 @@ public final class EntityPCHException extends PCHException{
 	private static final long serialVersionUID = 1L;
 
 	public EntityPCHException(final String mensajeUsuiario) {
-		super(mensajeUsuiario, Lugar.DATA);
+		super(mensajeUsuiario, Lugar.ENTITY);
 	}
 
-	public EntityPCHException(final String mensajeTecnico, final Throwable excepcionRaiz, final String mensajeUsuario) {
-		super(mensajeTecnico, Lugar.DATA, excepcionRaiz, mensajeUsuario);
+	public EntityPCHException(final String mensajeTecnico,final String mensajeUsuario, 
+			final Throwable exceptionRaiz) {
+		super(mensajeTecnico,mensajeUsuario, Lugar.ENTITY, exceptionRaiz);
 	}
-
+	
 	
 
 

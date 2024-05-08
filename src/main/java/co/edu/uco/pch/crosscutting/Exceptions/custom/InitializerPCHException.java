@@ -11,13 +11,14 @@ public final class InitializerPCHException extends PCHException{
 	private static final long serialVersionUID = 1L;
 
 	public InitializerPCHException(final String mensajeUsuiario) {
-		super(mensajeUsuiario, Lugar.DATA);
+		super(mensajeUsuiario, Lugar.INITIALIZER);
 	}
 
-	public InitializerPCHException(final String mensajeTecnico, final Throwable excepcionRaiz, final String mensajeUsuario) {
-		super(mensajeTecnico, Lugar.DATA, excepcionRaiz, mensajeUsuario);
+	public InitializerPCHException(final String mensajeTecnico,final String mensajeUsuario,
+			final Throwable exceptionRaiz) {
+		super(mensajeTecnico,mensajeUsuario, Lugar.INITIALIZER, exceptionRaiz);
 	}
-
+	
 	
 
 
