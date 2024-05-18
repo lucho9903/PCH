@@ -39,9 +39,5 @@ public final class PaisDTO {
 		return this;
 	}
 	
-	public static void main(String[] args) {
-		PaisDTO pais= PaisDTO.build();
-	}
-	
 	
 }

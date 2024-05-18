@@ -9,7 +9,7 @@ import java.util.UUID;
 import co.edu.uco.pch.data.dao.entity.DepartamentoDAO;
 import co.edu.uco.pch.data.dao.entity.concrete.SqlConnection;
 import co.edu.uco.pch.entity.DepartamentoEntity;
-import co.edu.uco.pch.entity.PaisEntity;
+
 
 
 public class DepartamentoAzureSqlDAO extends SqlConnection implements DepartamentoDAO{
