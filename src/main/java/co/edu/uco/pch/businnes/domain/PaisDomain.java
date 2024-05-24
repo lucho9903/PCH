@@ -13,28 +13,32 @@ public final class PaisDomain {
 		setId(id);
 		setNombre(nombre);
 	}
-	public static PaisDomain build(final UUID id, final String nombre) {
-		return new PaisDomain(id, nombre);
-	}	
-	public static PaisDomain build(final UUID id) {
-		return new PaisDomain(id, TextHelper.EMPTY);	
-	}
-	public static PaisDomain build() {
-		return new PaisDomain(UUIDHelper.generarUUIDDefecto(),
-				TextHelper.EMPTY);
-	}	
 	
-	private void setId(final UUID id) {
-		this.id = UUIDHelper.generarUUIDDefecto();
-	}
-	private void setNombre(final String nombre) {
-		this.nombre = nombre;
+	public static final PaisDomain build (final UUID id, final String nombre) {
+		return new PaisDomain(id, TextHelper.EMPTY);
 	}
 	
-	public UUID getId() {
+	public static PaisDomain build(){
+        return new PaisDomain(UUIDHelper.getDefault(), TextHelper.EMPTY);
+    }
+	
+	public static final  PaisDomain build (final UUID id) {
+		return new PaisDomain(id, TextHelper.EMPTY);
+	}
+	
+	private final void setId(final UUID id) {
+		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+	}
+	private final void setNombre(final String nombre) {
+		this.nombre = TextHelper.applyTrim(nombre);
+	}
+	
+	public final UUID getId() {
 		return id;
 	}
-		public String getNombre() {
+	
+	public final String getNombre() {
 		return nombre;
 	}
-}	
+
+}

@@ -28,7 +28,7 @@ public final class PaisDTO {
 		return id;
 	}
 	public final PaisDTO setId( final UUID id) {
-		this.id = UUIDHelper.obtenerValorDefecto(id);
+		this.id = id;
 		return this;
 	}
 	public final String getNombre() {

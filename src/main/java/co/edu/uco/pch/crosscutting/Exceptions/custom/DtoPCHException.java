@@ -8,7 +8,7 @@ public final class DtoPCHException extends PCHException{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3662331984905572117L;
 
 	public DtoPCHException(final String mensajeUsuiario) {
 		super(mensajeUsuiario, Lugar.DTO);
