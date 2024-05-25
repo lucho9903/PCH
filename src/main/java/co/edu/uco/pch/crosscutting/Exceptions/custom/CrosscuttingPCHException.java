@@ -21,11 +21,5 @@ public class CrosscuttingPCHException extends PCHException{
 	}
 	public CrosscuttingPCHException(final String mensajeTecnico, final Throwable excepcionRaiz, final String mensajeUsuario) {
 		super(mensajeTecnico,mensajeUsuario, lugar, excepcionRaiz);
-	}
-
-
-	
-
-
-	
+	}	
 }

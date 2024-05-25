@@ -1,4 +1,6 @@
 package co.edu.uco.pch.businnes.assembler.entity.impl;
+import java.util.List;
+
 import co.edu.uco.pch.businnes.assembler.dto.AssemblerDTO;
 import co.edu.uco.pch.businnes.assembler.dto.impl.DepartamentoAssemblerDTO;
 import co.edu.uco.pch.businnes.assembler.dto.impl.PaisAssemblerDTO;
@@ -31,6 +33,12 @@ public class DepartamentoAssemblerEntity implements AssemblerEntity<Departamento
 
 	@Override
 	public DepartamentoEntity toEntity(DepartamentoDomain domain) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<DepartamentoDomain> toDomainCollection(List<DepartamentoEntity> entituCollection) {
 		// TODO Auto-generated method stub
 		return null;
 	}
