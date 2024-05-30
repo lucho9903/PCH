@@ -16,28 +16,28 @@ public class CiudadAssemblerDTO implements AssemblerDTO<CiudadDomain, CiudadDTO>
 		super();
 	}
 	
-	public static final AssemblerDTO<CiudadDomain, CiudadDTO> getInstance(){
+	public final static AssemblerDTO<CiudadDomain, CiudadDTO> getInstance(){
 		return instance;
 	}
 	@Override
-	public CiudadDomain toDomain(CiudadDTO data) {
+	public final CiudadDomain toDomain(CiudadDTO data) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CiudadDTO toDTO(CiudadDomain domain) {
+	public final CiudadDTO toDTO(CiudadDomain domain) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<CiudadDomain> toDomainCollection(final List<CiudadDTO> dtoCollection) {
+	public final List<CiudadDomain> toDomainCollection(final List<CiudadDTO> dtoCollection) {
 		var dtoCollectionTmp = ObjectHelper.getObjectHelper()
 				.getDefaultValue(dtoCollection, new ArrayList<CiudadDTO>());
 		var resultadoDomain = new ArrayList<CiudadDomain>();
 		
-		for (CiudadDTO ciudadDto : dtoCollection) {
+		for (CiudadDTO ciudadDto : dtoCollectionTmp) {
 			var ciudadDomainTmp = toDomain(ciudadDto);
 			resultadoDomain.add(ciudadDomainTmp);
 		}
@@ -46,12 +46,11 @@ public class CiudadAssemblerDTO implements AssemblerDTO<CiudadDomain, CiudadDTO>
 	}
 
 	@Override
-	public List<CiudadDTO> toDTOCollection(final List<CiudadDomain> domainCollection) {
+	public final List<CiudadDTO> toDTOCollection(final List<CiudadDomain> domainCollection) {
 		var domainCollectionTmp = ObjectHelper.getObjectHelper()
 				.getDefaultValue(domainCollection, new ArrayList<CiudadDomain>());
-		return null;
+		return domainCollectionTmp.stream().map(this::toDTO).toList();
 	}
 	
-	//TAREA
 
 }

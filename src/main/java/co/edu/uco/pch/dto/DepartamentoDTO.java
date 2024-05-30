@@ -1,6 +1,10 @@
 package co.edu.uco.pch.dto;
 import java.util.UUID;
 
+import co.edu.uco.pch.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.pch.crosscutting.helpers.TextHelper;
+import co.edu.uco.pch.crosscutting.helpers.UUIDHelper;
+
 public final class DepartamentoDTO {
 	private UUID id;
 	private String nombre;
@@ -8,6 +12,9 @@ public final class DepartamentoDTO {
 	
 	public DepartamentoDTO() {
 		super();
+		setId(UUIDHelper.getDefault());
+		setNombre(TextHelper.EMPTY);
+		setPais(PaisDTO.build());
 		
 	}
 	public DepartamentoDTO(final UUID id, final String nombre, final PaisDTO pais) {
@@ -24,7 +31,7 @@ public final class DepartamentoDTO {
 		return id;
 	}
 	public final DepartamentoDTO setId(final UUID id) {
-		this.id = id;
+		this.id = ObjectHelper.getObjectHelper().getDefaultValue(id,UUIDHelper.generate());
 		return this;
 	}
 	public final String getNombre() {

@@ -17,23 +17,19 @@ public class ConsultarCiudades implements UseCaseWithReturn<CiudadDomain, List<C
 	private DAOFactory factory;
 	public ConsultarCiudades(final DAOFactory factory){
         if(ObjectHelper.getObjectHelper().isNull(factory)){
-            var mensajeUsuario = "Se ha presentado un porblema tratando de llevar a cabo el registro de una ciudad";
+            var mensajeUsuario = "Se ha presentado un porblema tratando de llevar a cabo la consulta de las  ciudades";
             var mensajeTecnico = "El DAOFactory para crear la ciudad llego nulo...";
             throw new BusinnesPCHException(mensajeTecnico, mensajeUsuario);
         }
         this.factory = factory;
     }
 	@Override
-	public List<CiudadDomain> execute(CiudadDomain data) {
-		var ciudadEntityFilter = 
-				CiudadAssemblerEntity.getInstance().toEntity(data);
-		var resultados = factory.getCiudadDAO().consultar(ciudadEntityFilter);
+	public List<CiudadDomain> execute( final CiudadDomain data) {
+		var ciudadEntityFilter =  CiudadAssemblerEntity.getInstance().toEntity(data);
+		var resultadosEntity = factory.getCiudadDAO().consultar(ciudadEntityFilter);
+			
 		
-		var resultadosDomain = CiudadAssemblerEntity.getInstance()
-				.toDomainCollection(resultadoDomain);
-		
-		
-		return resultadoDomain;
+		return CiudadAssemblerEntity.getInstance().toDomainCollection(resultadosEntity);
 	}
 
 }

@@ -24,7 +24,7 @@ public final class RegistrarCiudad implements UseCaseWithoutReturn<CiudadDomain>
         this.factory = factory;
     }
     @Override
-    public void excute( final CiudadDomain data) {
+    public void execute( final CiudadDomain data) {
         // 1. Validar que los casos de uso sean correctos a nivel de tipo de dato, longitutd, obligateriodidad, formato, rango, etc...
         // 2. Validar que no exista otra ciudad con el mismo nombre para el mismo departamento
         validarCiudadMismoNombreMismoDepartamento(data.getNombre(), data.getDepartamento().getId());

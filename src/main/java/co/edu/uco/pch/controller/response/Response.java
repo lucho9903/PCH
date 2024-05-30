@@ -6,6 +6,7 @@ import java.util.List;
 public class Response <T>{
 	private List<String> mensajes = new ArrayList<String>();
 	private List<T> datos;
+	
 	public final List<String> getMensajes() {
 		return mensajes;
 	}

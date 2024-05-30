@@ -2,30 +2,37 @@ package co.edu.uco.pch.businnes.facade.impl.ciudad;
 
 import co.edu.uco.pch.data.dao.factory.*;
 import co.edu.uco.pch.businnes.assembler.dto.impl.CiudadAssemblerDTO;
-import co.edu.uco.pch.businnes.assembler.entity.impl.CiudadAssemblerEntity;
+import co.edu.uco.pch.businnes.domain.CiudadDomain;
 import co.edu.uco.pch.businnes.facade.FacadeWhithoutReturn;
 import co.edu.uco.pch.crosscutting.Exceptions.PCHException;
 import co.edu.uco.pch.crosscutting.Exceptions.custom.BusinnesPCHException;
 import co.edu.uco.pch.dto.CiudadDTO;
+import co.edu.uco.pch.businnes.usecase.impl.ciudad.RegistrarCiudad;
+import co.edu.uco.pch.businnes.usecase.impl.ciudad.ConsultarCiudades;
+import co.edu.uco.pch.businnes.facade.FacadeWhithRetunr;
+import co.edu.uco.pch.data.dao.factory.DAOFactory;
+import java.util.List;
 
-public class RegistrarCiudadFacade implements FacadeWhithoutReturn<CiudadDTO>{
+
+
+public final class RegistrarCiudadFacade implements FacadeWhithoutReturn<CiudadDTO>{
 	
 	private DAOFactory daoFactory;
 	
 	
-	public RegistrarCiudadFacade(DAOFactory daoFactory2) {
+	public RegistrarCiudadFacade() {
 		daoFactory = DAOFactory.getFactory();
 	}
 	
 	
 
 	@Override
-	public void excute(CiudadDTO dto) {
+	public void execute(final CiudadDTO dto) {
 		daoFactory.iniciarTransaccion();
 		try {
-			var usecCase = new RegistrarCiudadFacade(daoFactory);
+			var useCase = new RegistrarCiudad(daoFactory);
 			var ciudadDomain = CiudadAssemblerDTO.getInstance().toDomain(dto);
-			usecCase.excute(ciudadDomain);
+			useCase.execute(ciudadDomain);
 			daoFactory.confirmarTransaccion();
 		}catch (final PCHException exception) {
 			daoFactory.cancelarTransaccion();

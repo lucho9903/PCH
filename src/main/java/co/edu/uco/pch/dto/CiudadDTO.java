@@ -2,6 +2,10 @@ package co.edu.uco.pch.dto;
 
 import java.util.UUID;
 
+import co.edu.uco.pch.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.pch.crosscutting.helpers.TextHelper;
+import co.edu.uco.pch.crosscutting.helpers.UUIDHelper;
+
 public final class CiudadDTO {
 	private UUID id;
 	private String nombre;
@@ -9,6 +13,9 @@ public final class CiudadDTO {
 	
 	public CiudadDTO() {
 		super();
+		setId(UUIDHelper.getDefault());
+		setNombre(TextHelper.EMPTY);
+		setDepartamento(DepartamentoDTO.build());
 		
 	}
 	
@@ -26,7 +33,7 @@ public final class CiudadDTO {
 		return id;
 	}
 	public final CiudadDTO setId(final UUID id) {
-		this.id = id;
+		this.id = ObjectHelper.getObjectHelper().getDefaultValue(id,UUIDHelper.generate());
 		return this;
 	}
 	public final String getNombre() {

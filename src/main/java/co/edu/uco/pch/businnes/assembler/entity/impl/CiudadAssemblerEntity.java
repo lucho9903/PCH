@@ -10,8 +10,14 @@ import co.edu.uco.pch.businnes.domain.CiudadDomain;
 import co.edu.uco.pch.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.pch.dto.CiudadDTO;
 import co.edu.uco.pch.entity.CiudadEntity;
-public class CiudadAssemblerEntity implements AssemblerEntity<CiudadDomain, CiudadEntity>{
-private static final AssemblerEntity<CiudadDomain, CiudadEntity> instance=new CiudadAssemblerEntity();
+import co.edu.uco.pch.entity.DepartamentoEntity;
+import co.edu.uco.pch.businnes.domain.DepartamentoDomain;
+
+
+public final class CiudadAssemblerEntity implements AssemblerEntity<CiudadDomain, CiudadEntity>{
+	private static final AssemblerEntity<DepartamentoDomain, DepartamentoEntity> departamentoAssembler = DepartamentoAssemblerEntity
+			.getInstance();
+	private static final AssemblerEntity<CiudadDomain, CiudadEntity> instance=new CiudadAssemblerEntity();
 	
 	private CiudadAssemblerEntity() {
 		super();
@@ -22,25 +28,24 @@ private static final AssemblerEntity<CiudadDomain, CiudadEntity> instance=new Ci
 	}
 
 	@Override
-	public CiudadDomain toDomain(final CiudadEntity data) {
+	public final CiudadDomain toDomain(final CiudadEntity data) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CiudadEntity toEntity(final CiudadDomain domain) {
+	public final CiudadEntity toEntity(final CiudadDomain domain) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<CiudadDomain> toDomainCollection(final List<CiudadEntity> entituCollection) {
-		// TODO Auto-generated method stub
+	public List<CiudadDomain> toDomainCollection(final List<CiudadEntity> entityCollection) {
 		var entityCollectionTmp = ObjectHelper.getObjectHelper()
-				.getDefaultValue(entituCollection,new ArrayList<CiudadEntity>());
+				.getDefaultValue(entityCollection,new ArrayList<CiudadEntity>());
+		
 		return entityCollectionTmp.stream()
-				.map(this :: toDomain)
-				.toList();
+				.map(this::toDomain).toList();
 	}
 
 }
